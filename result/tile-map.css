@@ -1,0 +1,735 @@
+
+.contact-tiles{
+    background-clip:content-box;
+    position:relative;
+    background:url("tile-map") no-repeat;
+
+}
+.contact-tiles.dashleft7-png{
+    padding:4px 57px 0 19px;
+    width:52px;
+    background-position:19px 4px;
+    height:28px;
+
+}
+.contact-tiles.dashright7-png{
+    padding:4px 19px 0 57px;
+    width:52px;
+    background-position:5px 4px;
+    height:28px;
+
+}
+.contact-tiles.dashright6-png{
+    padding:1px 81px 0 12px;
+    width:35px;
+    background-position:12px -27px;
+    height:31px;
+
+}
+.contact-tiles.idle20-png{
+    padding:18px 6px 13px 1px;
+    width:25px;
+    background-position:1px -41px;
+    height:33px;
+
+}
+.contact-tiles.dashleft6-png{
+    padding:1px 13px 0 82px;
+    width:33px;
+    background-position:82px -91px;
+    height:31px;
+
+}
+.contact-tiles.idle21-png{
+    padding:24px 6px 7px 2px;
+    width:24px;
+    background-position:2px -99px;
+    height:33px;
+
+}
+.contact-tiles.idle22-png{
+    padding:31px 4px 0 3px;
+    width:25px;
+    background-position:3px -125px;
+    height:33px;
+
+}
+.contact-tiles.dashleft2-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:108px -189px;
+    height:32px;
+
+}
+.contact-tiles.dashright2-png{
+    padding:0 108px 0 2px;
+    width:18px;
+    background-position:2px -221px;
+    height:32px;
+
+}
+.contact-tiles.dashleft1-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:73px -28px;
+    height:32px;
+
+}
+.contact-tiles.dashleft0-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:73px -60px;
+    height:32px;
+
+}
+.contact-tiles.dashleft4-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:73px -92px;
+    height:32px;
+
+}
+.contact-tiles.dashright3-png{
+    padding:0 109px 0 2px;
+    width:17px;
+    background-position:-16px -189px;
+    height:32px;
+
+}
+.contact-tiles.dashright1-png{
+    padding:0 108px 0 2px;
+    width:18px;
+    background-position:-33px -124px;
+    height:32px;
+
+}
+.contact-tiles.dashright4-png{
+    padding:0 109px 0 2px;
+    width:17px;
+    background-position:-16px -221px;
+    height:32px;
+
+}
+.contact-tiles.dashleft3-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:73px -156px;
+    height:32px;
+
+}
+.contact-tiles.dashright0-png{
+    padding:0 108px 0 2px;
+    width:18px;
+    background-position:-33px -188px;
+    height:32px;
+
+}
+.contact-tiles.dashleft5-png{
+    padding:0 2px 0 108px;
+    width:18px;
+    background-position:73px -220px;
+    height:32px;
+
+}
+.contact-tiles.dashright5-png{
+    padding:0 108px 0 2px;
+    width:18px;
+    background-position:-51px -28px;
+    height:32px;
+
+}
+.contact-tiles.idle14-png{
+    padding:0 8px 33px 3px;
+    width:21px;
+    background-position:-68px -28px;
+    height:31px;
+
+}
+.contact-tiles.idle44-png{
+    padding:30px 4px 3px 3px;
+    width:25px;
+    background-position:-89px 2px;
+    height:31px;
+
+}
+.contact-tiles.idle23-png{
+    padding:33px 5px 0 3px;
+    width:24px;
+    background-position:-114px 5px;
+    height:31px;
+
+}
+.contact-tiles.idle30-png{
+    padding:7px 5px 27px 7px;
+    width:20px;
+    background-position:-134px -21px;
+    height:30px;
+
+}
+.contact-tiles.idle1-png{
+    padding:34px 4px 0 3px;
+    width:25px;
+    background-position:-158px 6px;
+    height:30px;
+
+}
+.contact-tiles.idle31-png{
+    padding:5px 5px 29px 7px;
+    width:20px;
+    background-position:-179px -23px;
+    height:30px;
+
+}
+.contact-tiles.escaperight11-png{
+    padding:0 8px 2px 9px;
+    width:15px;
+    background-position:-197px -28px;
+    height:30px;
+
+}
+.contact-tiles.escapeleft12-png{
+    padding:0 8px 2px 7px;
+    width:17px;
+    background-position:-214px -28px;
+    height:30px;
+
+}
+.contact-tiles.idle45-png{
+    padding:34px 5px 0 2px;
+    width:25px;
+    background-position:-236px 6px;
+    height:30px;
+
+}
+.contact-tiles.idle7-png{
+    padding:9px 6px 25px 3px;
+    width:23px;
+    background-position:-50px -51px;
+    height:30px;
+
+}
+.contact-tiles.idle0-png{
+    padding:34px 5px 0 2px;
+    width:25px;
+    background-position:-74px -26px;
+    height:30px;
+
+}
+.contact-tiles.idle8-png{
+    padding:6px 7px 28px 4px;
+    width:21px;
+    background-position:-49px -84px;
+    height:30px;
+
+}
+.contact-tiles.idle13-png{
+    padding:0 7px 34px 4px;
+    width:21px;
+    background-position:-49px -120px;
+    height:30px;
+
+}
+.contact-tiles.idle19-png{
+    padding:13px 5px 21px 0;
+    width:27px;
+    background-position:-101px -47px;
+    height:30px;
+
+}
+.contact-tiles.idle42-png{
+    padding:17px 2px 17px 5px;
+    width:25px;
+    background-position:-123px -43px;
+    height:30px;
+
+}
+.contact-tiles.escapeleft11-png{
+    padding:0 8px 2px 7px;
+    width:17px;
+    background-position:-256px -28px;
+    height:30px;
+
+}
+.contact-tiles.idle43-png{
+    padding:24px 3px 10px 5px;
+    width:24px;
+    background-position:-148px -36px;
+    height:30px;
+
+}
+.contact-tiles.escaperight12-png{
+    padding:0 7px 2px 8px;
+    width:17px;
+    background-position:-45px -150px;
+    height:30px;
+
+}
+.contact-tiles.escapeleft16-png{
+    padding:2px 5px 0 7px;
+    width:20px;
+    background-position:-46px -178px;
+    height:30px;
+
+}
+.contact-tiles.escaperight17-png{
+    padding:3px 7px 0 4px;
+    width:21px;
+    background-position:-49px -207px;
+    height:29px;
+
+}
+.contact-tiles.dashleft8-png{
+    padding:3px 102px 0 0;
+    width:26px;
+    background-position:-177px -57px;
+    height:29px;
+
+}
+.contact-tiles.idle9-png{
+    padding:4px 9px 31px 1px;
+    width:22px;
+    background-position:-52px -235px;
+    height:29px;
+
+}
+.contact-tiles.escaperight18-png{
+    padding:3px 7px 0 3px;
+    width:22px;
+    background-position:-200px -57px;
+    height:29px;
+
+}
+.contact-tiles.escaperight19-png{
+    padding:3px 8px 0 2px;
+    width:22px;
+    background-position:-223px -57px;
+    height:29px;
+
+}
+.contact-tiles.escaperight10-png{
+    padding:1px 9px 2px 7px;
+    width:16px;
+    background-position:-240px -59px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft10-png{
+    padding:1px 7px 2px 9px;
+    width:16px;
+    background-position:-254px -59px;
+    height:29px;
+
+}
+.contact-tiles.idle41-png{
+    padding:11px 1px 24px 5px;
+    width:26px;
+    background-position:-71px -79px;
+    height:29px;
+
+}
+.contact-tiles.idle40-png{
+    padding:6px 0 29px 5px;
+    width:27px;
+    background-position:-97px -84px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft9-png{
+    padding:2px 4px 1px 9px;
+    width:19px;
+    background-position:-67px -117px;
+    height:29px;
+
+}
+.contact-tiles.idle28-png{
+    padding:18px 4px 17px 7px;
+    width:21px;
+    background-position:-69px -130px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft19-png{
+    padding:3px 2px 0 8px;
+    width:22px;
+    background-position:-68px -174px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft15-png{
+    padding:2px 6px 1px 6px;
+    width:20px;
+    background-position:-70px -204px;
+    height:29px;
+
+}
+.contact-tiles.escaperight15-png{
+    padding:2px 6px 1px 6px;
+    width:20px;
+    background-position:-70px -233px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft17-png{
+    padding:3px 4px 0 7px;
+    width:21px;
+    background-position:-122px -87px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft13-png{
+    padding:1px 7px 2px 6px;
+    width:19px;
+    background-position:-144px -89px;
+    height:29px;
+
+}
+.contact-tiles.idle27-png{
+    padding:25px 3px 10px 4px;
+    width:25px;
+    background-position:-165px -65px;
+    height:29px;
+
+}
+.contact-tiles.idle32-png{
+    padding:3px 4px 32px 8px;
+    width:20px;
+    background-position:-186px -87px;
+    height:29px;
+
+}
+.contact-tiles.escaperight16-png{
+    padding:2px 7px 1px 5px;
+    width:20px;
+    background-position:-209px -88px;
+    height:29px;
+
+}
+.contact-tiles.idle29-png{
+    padding:12px 5px 23px 8px;
+    width:19px;
+    background-position:-226px -78px;
+    height:29px;
+
+}
+.contact-tiles.escapeleft18-png{
+    padding:3px 2px 0 7px;
+    width:23px;
+    background-position:-246px -87px;
+    height:29px;
+
+}
+.contact-tiles.escaperight13-png{
+    padding:1px 6px 2px 7px;
+    width:19px;
+    background-position:-95px -118px;
+    height:29px;
+
+}
+.contact-tiles.escaperight0-png{
+    padding:3px 8px 1px 2px;
+    width:22px;
+    background-position:-102px 3px;
+    height:28px;
+
+}
+.contact-tiles.idle5-png{
+    padding:22px 4px 14px 3px;
+    width:25px;
+    background-position:-123px 22px;
+    height:28px;
+
+}
+.contact-tiles.idle4-png{
+    padding:29px 4px 7px 4px;
+    width:24px;
+    background-position:-147px 29px;
+    height:28px;
+
+}
+.contact-tiles.escaperight14-png{
+    padding:2px 6px 2px 6px;
+    width:20px;
+    background-position:-169px 2px;
+    height:28px;
+
+}
+.contact-tiles.dashright8-png{
+    padding:4px 0 0 102px;
+    width:26px;
+    background-position:-93px 4px;
+    height:28px;
+
+}
+.contact-tiles.escapeleft14-png{
+    padding:2px 6px 2px 6px;
+    width:20px;
+    background-position:-215px 2px;
+    height:28px;
+
+}
+.contact-tiles.idle6-png{
+    padding:15px 4px 21px 4px;
+    width:24px;
+    background-position:-237px 15px;
+    height:28px;
+
+}
+.contact-tiles.idle18-png{
+    padding:9px 5px 27px 0;
+    width:27px;
+    background-position:-121px -110px;
+    height:28px;
+
+}
+.contact-tiles.escaperight8-png{
+    padding:4px 8px 0 2px;
+    width:22px;
+    background-position:-146px -115px;
+    height:28px;
+
+}
+.contact-tiles.idle39-png{
+    padding:4px 0 33px 6px;
+    width:26px;
+    background-position:-164px -115px;
+    height:27px;
+
+}
+.contact-tiles.escaperight7-png{
+    padding:5px 9px 0 4px;
+    width:19px;
+    background-position:-98px -143px;
+    height:27px;
+
+}
+.contact-tiles.idle12-png{
+    padding:1px 4px 36px 4px;
+    width:24px;
+    background-position:-192px -118px;
+    height:27px;
+
+}
+.contact-tiles.idle24-png{
+    padding:37px 5px 0 3px;
+    width:24px;
+    background-position:-217px -82px;
+    height:27px;
+
+}
+.contact-tiles.idle26-png{
+    padding:33px 4px 4px 4px;
+    width:24px;
+    background-position:-240px -86px;
+    height:27px;
+
+}
+.contact-tiles.escapeleft0-png{
+    padding:4px 2px 1px 8px;
+    width:22px;
+    background-position:-113px -143px;
+    height:27px;
+
+}
+.contact-tiles.idle17-png{
+    padding:5px 5px 32px 0;
+    width:27px;
+    background-position:-143px -142px;
+    height:27px;
+
+}
+.contact-tiles.idle3-png{
+    padding:36px 5px 1px 4px;
+    width:23px;
+    background-position:-139px -138px;
+    height:27px;
+
+}
+.contact-tiles.escapeleft7-png{
+    padding:4px 4px 1px 9px;
+    width:19px;
+    background-position:-93px -171px;
+    height:27px;
+
+}
+.contact-tiles.escapeleft8-png{
+    padding:4px 2px 1px 8px;
+    width:22px;
+    background-position:-113px -170px;
+    height:27px;
+
+}
+.contact-tiles.escaperight9-png{
+    padding:3px 9px 2px 3px;
+    width:20px;
+    background-position:-118px -198px;
+    height:27px;
+
+}
+.contact-tiles.idle16-png{
+    padding:4px 5px 34px 0;
+    width:27px;
+    background-position:0 -249px;
+    height:26px;
+
+}
+.contact-tiles.idle15-png{
+    padding:3px 5px 35px 0;
+    width:27px;
+    background-position:-143px -198px;
+    height:26px;
+
+}
+.contact-tiles.escaperight1-png{
+    padding:4px 5px 2px 4px;
+    width:23px;
+    background-position:-139px -223px;
+    height:26px;
+
+}
+.contact-tiles.escapeleft6-png{
+    padding:5px 4px 1px 7px;
+    width:21px;
+    background-position:-114px -223px;
+    height:26px;
+
+}
+.contact-tiles.idle37-png{
+    padding:4px 1px 34px 5px;
+    width:26px;
+    background-position:-138px -249px;
+    height:26px;
+
+}
+.contact-tiles.idle2-png{
+    padding:38px 5px 0 4px;
+    width:23px;
+    background-position:-166px -109px;
+    height:26px;
+
+}
+.contact-tiles.idle10-png{
+    padding:4px 5px 34px 2px;
+    width:25px;
+    background-position:-191px -143px;
+    height:26px;
+
+}
+.contact-tiles.idle11-png{
+    padding:3px 4px 35px 2px;
+    width:26px;
+    background-position:-216px -144px;
+    height:26px;
+
+}
+.contact-tiles.escaperight6-png{
+    padding:5px 7px 1px 3px;
+    width:22px;
+    background-position:-241px -142px;
+    height:26px;
+
+}
+.contact-tiles.idle38-png{
+    padding:4px 1px 34px 6px;
+    width:25px;
+    background-position:-164px -169px;
+    height:26px;
+
+}
+.contact-tiles.idle25-png{
+    padding:38px 4px 0 4px;
+    width:24px;
+    background-position:-166px -161px;
+    height:26px;
+
+}
+.contact-tiles.escapeleft4-png{
+    padding:5px 5px 3px 1px;
+    width:26px;
+    background-position:-194px -168px;
+    height:24px;
+
+}
+.contact-tiles.escapeleft1-png{
+    padding:4px 4px 2px 5px;
+    width:23px;
+    background-position:-165px -221px;
+    height:26px;
+
+}
+.contact-tiles.escaperight2-png{
+    padding:4px 4px 3px 6px;
+    width:22px;
+    background-position:-115px -250px;
+    height:25px;
+
+}
+.contact-tiles.escapeleft2-png{
+    padding:4px 6px 3px 3px;
+    width:23px;
+    background-position:-167px -247px;
+    height:25px;
+
+}
+.contact-tiles.escaperight5-png{
+    padding:5px 5px 2px 2px;
+    width:25px;
+    background-position:-193px -192px;
+    height:25px;
+
+}
+.contact-tiles.escapeleft5-png{
+    padding:5px 2px 2px 5px;
+    width:25px;
+    background-position:-190px -217px;
+    height:25px;
+
+}
+.contact-tiles.idle34-png{
+    padding:4px 0 36px 7px;
+    width:25px;
+    background-position:-214px -169px;
+    height:24px;
+
+}
+.contact-tiles.idle35-png{
+    padding:5px 0 36px 7px;
+    width:25px;
+    background-position:-239px -168px;
+    height:23px;
+
+}
+.contact-tiles.escaperight4-png{
+    padding:5px 1px 3px 6px;
+    width:25px;
+    background-position:-189px -242px;
+    height:24px;
+
+}
+.contact-tiles.idle33-png{
+    padding:4px 1px 35px 6px;
+    width:25px;
+    background-position:-214px -193px;
+    height:25px;
+
+}
+.contact-tiles.escapeleft3-png{
+    padding:5px 5px 4px 3px;
+    width:24px;
+    background-position:-242px -192px;
+    height:23px;
+
+}
+.contact-tiles.idle36-png{
+    padding:6px 0 35px 10px;
+    width:22px;
+    background-position:-210px -216px;
+    height:23px;
+
+}
+.contact-tiles.escaperight3-png{
+    padding:5px 3px 4px 6px;
+    width:23px;
+    background-position:-236px -217px;
+    height:23px;
+
+}

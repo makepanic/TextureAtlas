@@ -7,10 +7,20 @@ import math
 # Configurations you need to set. Only use borders if you ever do filtering on your sprites. And then you should
 # probably set it to transparent or duplicate the edges depending on your use case. Using solid red now to
 # make it clear they're there.
-folder = './brownie'
-atlasBaseName = 'atlas'
+folderInput = './images/'
+folderOutput = './result/'
+
+atlasBaseName = 'tile-map'
 useBorder = False
+
+#css specific
+useTabs = False
+tabSize = 4
+
 borderColor = 'red'
+tileCssClass = '.contact-tiles'
+tabBuf = ''
+
 
 images = []
 
@@ -126,7 +136,7 @@ def writeSVG(images, atlasW, atlasH):
     svgHeight = svgRez - colSize
   svgCenterW = svgRez + (atlasW * scale + svgRez / 20) / 2
   svgCenterH = svgHeight / 2
-  out = open(atlasBaseName+'.svg', 'w')
+  out = open(folderOutput + atlasBaseName+'.svg', 'w')
   out.write('<?xml version="1.0"?>\n<svg width="' + str(svgWidth) + '" height="' + str(svgHeight) + '" viewBox="0 0 ' + str(svgWidth) + ' ' + str(svgHeight) + '" xmlns="http://www.w3.org/2000/svg">\n')
   dstIndex = 0
   totalTime = 20.0
@@ -161,7 +171,7 @@ def writeAtlas(images, atlasW, atlasH):
   else:
     for i in images:
       atlasImg.paste(i.img, [int(i.img.destRect.xmin), int(i.img.destRect.ymin), int(i.img.destRect.xmax + 1), int(i.img.destRect.ymax + 1)])
-  atlasImg.save(atlasBaseName + '.png')
+  atlasImg.save(folderOutput + atlasBaseName + '.png')
   atlasImg = None
 
 # Remove one pixel on each side of the images before dumping the CSS and JSON info.
@@ -172,23 +182,56 @@ def removeBorders(images):
     i.img.destRect.xmax -= 1
     i.img.destRect.ymax -= 1
 
+def addPx(value):
+  pxVal = ""
+  if value == 0:
+    pxVal = str(value)
+  else:
+    pxVal = str(value) + 'px'
+  return pxVal
+
+def getTab():
+  global tabBuf
+  tab = ''
+  if tabBuf != '':
+    return tabBuf
+  if useTabs:
+    tab = '\t'
+  else:
+    for i in range(tabSize):
+      tab += ' '
+  tabBuf = tab
+  return tab
+
+
+
+def makeCssRule(selector, prop):
+  rule = selector + '{\n'
+  for i in prop:
+    rule += getTab() + i + ':' + prop[i] + ";\n"
+  rule += '\n}'
+  return '\n' + rule
+
 def writeCSS(images, atlasW, atlasH):
-  css = open(atlasBaseName + '.css', 'w')
+  css = open(folderOutput + atlasBaseName + '.css', 'w')
+  css.write(makeCssRule(tileCssClass, {
+    'position' : 'relative',
+    'background' : 'url("' + atlasBaseName + '") no-repeat',
+    'background-clip' : 'content-box'
+  }))
   for i in images:
-    css.write('div.' + i.fileName.replace('.', '-') + '\n{\n')
-    css.write('  position: relative;\n')
-    css.write('  padding-left: ' + str(i.offset[0]) + 'px;\n')
-    css.write('  padding-top: ' + str(i.offset[1]) + 'px;\n')
-    css.write('  padding-right: ' + str(i.uncropped.width() - i.img.destRect.width() - i.offset[0]) + 'px;\n')
-    css.write('  padding-bottom: ' + str(i.uncropped.height() - i.img.destRect.height() - i.offset[1]) + 'px;\n')
-    css.write('  width: ' + str(i.img.destRect.width()) + 'px;\n')
-    css.write('  height: ' + str(i.img.destRect.height()) + 'px;\n')
-    css.write('  background: url(\'' + atlasBaseName + '.png' + '\') ' + str(-i.img.destRect.xmin+i.offset[0]) + 'px ' + str(-i.img.destRect.ymin+i.offset[1]) + 'px no-repeat;\n')
-    css.write('  background-clip: content-box;\n}\n\n')
+    rules = {
+      'padding' : addPx(i.offset[1]) + ' ' + addPx(i.uncropped.width() - i.img.destRect.width() - i.offset[0]) + ' ' + addPx
+    (i.uncropped.height() - i.img.destRect.height() - i.offset[1]) + ' ' + addPx(i.offset[0]),
+      'width' : addPx(i.img.destRect.width()),
+      'height' : addPx(i.img.destRect.height()),
+      'background-position' : addPx(-i.img.destRect.xmin+i.offset[0]) + ' ' + addPx(-i.img.destRect.ymin+i.offset[1])
+    }
+    css.write(makeCssRule(tileCssClass + '.' + i.fileName.replace('.', '-'), rules))
   css.close()
 
 def writeJSON(images, atlasW, atlasH):
-  json = open(atlasBaseName + '.json', 'w')
+  json = open(folderOutput + atlasBaseName + '.json', 'w')
   json.write('{\n  "atlas" : "' + atlasBaseName + '.png",\n  "images" : {\n');
   for i in images:
     json.write('    "' + i.fileName.replace('.', '-') + '" : {\n')
@@ -203,22 +246,22 @@ def writeJSON(images, atlasW, atlasH):
 
 originalIndex = 0
 
-def addFolder(folder):
+def addfolderInput(folderInput):
   global originalIndex
-  folderList = os.listdir(folder);
-  for folderName in folderList:
-    if folderName[0] == '.':
+  folderInputList = os.listdir(folderInput);
+  for folderInputName in folderInputList:
+    if folderInputName[0] == '.':
       continue
-    fullPath = folder + '/' + folderName
+    fullPath = folderInput + folderInputName
     if os.path.isdir(fullPath) == True:
-      addFolder(fullPath)
+      addfolderInput(fullPath)
     else:
       # Create source image structs and give them a unique index.
       print(fullPath)
-      images.append(SourceImage(folder, folderName, originalIndex))
+      images.append(SourceImage(folderInput, folderInputName, originalIndex))
       originalIndex = originalIndex + 1
 
-addFolder(folder)
+addfolderInput(folderInput)
 
 # Sort the source images using the insert heuristic.
 images.sort(None, maxExtent, True)
@@ -274,5 +317,5 @@ writeAtlas(images, atlasW, atlasH)
 if useBorder:
   removeBorders(images)
 writeCSS(images, atlasW, atlasH)
-writeSVG(images, atlasW, atlasH)
-writeJSON(images, atlasW, atlasH)
+#writeSVG(images, atlasW, atlasH)
+#writeJSON(images, atlasW, atlasH)
