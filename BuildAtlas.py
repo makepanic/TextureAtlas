@@ -209,7 +209,7 @@ def makeCssRule(selector, prop):
   rule = selector + '{\n'
   for i in prop:
     rule += getTab() + i + ':' + prop[i] + ";\n"
-  rule += '\n}'
+  rule += '}'
   return '\n' + rule
 
 def writeCSS(images, atlasW, atlasH):
