@@ -11,7 +11,6 @@ folderInput = './images/'
 folderOutput = './result/'
 
 atlasBaseName = 'tile-map'
-useBorder = False
 
 #css specific
 useTabs = False
@@ -19,9 +18,9 @@ tabSize = 4
 
 borderColor = 'red'
 tileCssClass = '.contact-tiles'
+
+
 tabBuf = ''
-
-
 images = []
 
 # A source image structure that loads the image and stores the
@@ -47,9 +46,6 @@ class SourceImage:
     self.img.load()
     self.offset = (bbox[0], bbox[1])
     self.rect = Rect(0,0, self.img.size[0]-1, self.img.size[1]-1)
-    if useBorder:
-      self.rect.xmax += 2
-      self.rect.ymax += 2
 
 
 # A simple rect class using inclusive coordinates.
@@ -120,57 +116,10 @@ def imageArea(i):
 def maxExtent(i):
   return max([i.rect.width(), i.rect.height()])
 
-# Dump out an illustrative SVG showing how the atlas is created.
-def writeSVG(images, atlasW, atlasH):
-  rows = math.floor(math.sqrt(len(images)))
-  cols = math.ceil(len(images) / rows)
-  maxImgDim = 0
-  for i in images:
-    maxImgDim = max([maxImgDim, images[0].rect.width(), images[0].rect.height()])
-  svgRez = 1000
-  colSize = svgRez / (cols + 1) - 1
-  scale = colSize / maxImgDim
-  svgWidth = svgRez + atlasW * scale + svgRez / 20
-  svgHeight = svgRez
-  if cols > rows:
-    svgHeight = svgRez - colSize
-  svgCenterW = svgRez + (atlasW * scale + svgRez / 20) / 2
-  svgCenterH = svgHeight / 2
-  out = open(folderOutput + atlasBaseName+'.svg', 'w')
-  out.write('<?xml version="1.0"?>\n<svg width="' + str(svgWidth) + '" height="' + str(svgHeight) + '" viewBox="0 0 ' + str(svgWidth) + ' ' + str(svgHeight) + '" xmlns="http://www.w3.org/2000/svg">\n')
-  dstIndex = 0
-  totalTime = 20.0
-  timePerStep = totalTime / len(images)
-  for i in images:
-    c = math.floor(i.origIndex % cols)
-    r = math.floor(i.origIndex / cols)
-    x = (c + 1) * colSize + c
-    y = (r + 1) * colSize + r
-    w = i.rect.width() * scale
-    h = i.rect.height() * scale
-    x = x - w / 2
-    y = y - h / 2
-    dx = svgCenterW - atlasW * scale / 2 + (i.img.destRect.xmin + i.img.destRect.width() / 2) * scale
-    dy = svgCenterH - atlasH * scale / 2 + (i.img.destRect.ymin + i.img.destRect.height() / 2) * scale
-    start = 1.0 + dstIndex * timePerStep
-    fstart = 1.0 + totalTime + 1.0
-    out.write('  <rect id="'+str(i.origIndex)+'" x="' + str(-w/2) + '" y="' + str(-h/2) + '" width="' + str(w) + '" height="' + str(h) + '" transform="translate(' + str(x) + ',' + str(y) + ')" stroke="#000000" fill="#4bbf67">\n')
-    out.write('    <animateTransform attributeName="transform" attributeType="XML" type="translate" from="' + str(x) + ' ' + str(y) + '" to="' + str(dx) + ' ' + str(dy) + '" begin="' + str(start) + '" dur="' + str(timePerStep) + 's" additive="replace" fill="freeze"/>\n')
-    out.write('  </rect>\n')
-    dstIndex = dstIndex + 1
-  out.write('</svg>')
-  out.close()
-
 def writeAtlas(images, atlasW, atlasH):
   atlasImg = Image.new('RGBA', [atlasW, atlasH])
-  if useBorder:
-    draw = ImageDraw.Draw(atlasImg)
-    draw.rectangle((0, 0, atlasW, atlasH), fill=borderColor)
-    for i in images:
-      atlasImg.paste(i.img, [int(i.img.destRect.xmin + 1), int(i.img.destRect.ymin + 1), int(i.img.destRect.xmax), int(i.img.destRect.ymax)])
-  else:
-    for i in images:
-      atlasImg.paste(i.img, [int(i.img.destRect.xmin), int(i.img.destRect.ymin), int(i.img.destRect.xmax + 1), int(i.img.destRect.ymax + 1)])
+  for i in images:
+    atlasImg.paste(i.img, [int(i.img.destRect.xmin), int(i.img.destRect.ymin), int(i.img.destRect.xmax + 1), int(i.img.destRect.ymax + 1)])
   atlasImg.save(folderOutput + atlasBaseName + '.png')
   atlasImg = None
 
@@ -203,8 +152,6 @@ def getTab():
   tabBuf = tab
   return tab
 
-
-
 def makeCssRule(selector, prop):
   rule = selector + '{\n'
   for i in prop:
@@ -229,20 +176,6 @@ def writeCSS(images, atlasW, atlasH):
     }
     css.write(makeCssRule(tileCssClass + '.' + i.fileName.replace('.', '-'), rules))
   css.close()
-
-def writeJSON(images, atlasW, atlasH):
-  json = open(folderOutput + atlasBaseName + '.json', 'w')
-  json.write('{\n  "atlas" : "' + atlasBaseName + '.png",\n  "images" : {\n');
-  for i in images:
-    json.write('    "' + i.fileName.replace('.', '-') + '" : {\n')
-    json.write('      "rect" : [' + str(i.img.destRect.xmin) + ', ' + str(i.img.destRect.ymin) + ', ' + str(i.img.destRect.xmax) + ', ' + str(i.img.destRect.ymax) + '],\n')
-    json.write('      "offset" : [' + str(i.offset[0]) + ', ' + str(i.offset[1]) + '],\n')
-    json.write('      "pad": [ ' + str(i.uncropped.width() - i.img.destRect.width() - i.offset[0]) + ', ' + str(i.uncropped.height() - i.img.destRect.height() - i.offset[1]) + ']\n    }')
-    if i != images[-1]:
-      json.write(',')
-    json.write('\n')
-  json.write('  }\n}')
-  json.close()
 
 originalIndex = 0
 
@@ -313,9 +246,4 @@ atlasH = int(atlasH+1)
 print('AtlasDimensions: ' + str(atlasW) + 'x' + str(atlasH) + '  :  ' + str(int(100.0 * (atlasW * atlasH)/totalAreaUncropped)) + '% of original')
 
 writeAtlas(images, atlasW, atlasH)
-# Remove the borders from the sizes before we dumt the CSS and JSON.
-if useBorder:
-  removeBorders(images)
 writeCSS(images, atlasW, atlasH)
-#writeSVG(images, atlasW, atlasH)
-#writeJSON(images, atlasW, atlasH)
