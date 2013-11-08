@@ -1,7 +1,7 @@
 import sys
 import os
-import Image
-import ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 import math
 
 # Configurations you need to set. Only use borders if you ever do filtering on your sprites. And then you should
@@ -10,14 +10,14 @@ import math
 folderInput = './images/'
 folderOutput = './result/'
 
-atlasBaseName = 'tile-map'
+atlasBaseName = 'search-icons'
 
 #css specific
 useTabs = False
 tabSize = 4
 
-borderColor = 'red'
-tileCssClass = '.contact-tiles'
+borderColor = ''
+tileCssClass = '.search-icon'
 
 
 tabBuf = ''
@@ -114,6 +114,9 @@ def imageArea(i):
 # The used heuristic for insertion order, inserting images with the
 # largest extent (in any direction) first.
 def maxExtent(i):
+  print "maxExtent"
+  print [i.rect.width(), i.rect.height()]
+  print max([i.rect.width(), i.rect.height()])
   return max([i.rect.width(), i.rect.height()])
 
 def writeAtlas(images, atlasW, atlasH):
